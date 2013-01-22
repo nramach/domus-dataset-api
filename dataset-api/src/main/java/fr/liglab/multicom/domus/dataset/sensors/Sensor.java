@@ -58,6 +58,8 @@ public abstract class Sensor {
   protected TreeMap<Date, Object> values = new TreeMap<Date, Object>();
   
   private Identifier id;
+
+private File file;//TODO suppress
   
   public Sensor(Identifier id) {
     this.id = id;
@@ -112,10 +114,22 @@ public abstract class Sensor {
     return ret;
   }
   
+  /* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Sensor) {
+			return ((Sensor) obj).getId().equals(this.id);
+		}
+		return super.equals(obj);
+	}
+  
   public static final Sensor parse(File file) {
     Identifier id = Identifier.fromFilename(file.getName());
 
     Sensor s = SensorsList.getSensor(id);
+    s.setFile(file);
     
     try {
       CsvReader reader = new CsvReader(new FileReader(file));
@@ -137,6 +151,20 @@ public abstract class Sensor {
     
     return s;
   }
+
+	/**
+	 * @param file
+	 */
+	public void setFile(File file) {
+		//TODO suppress
+		this.file = file;
+	}
+	
+	public File getFile() {
+		//TODO suppress
+		return this.file;
+	}
   
+ 
   
 }

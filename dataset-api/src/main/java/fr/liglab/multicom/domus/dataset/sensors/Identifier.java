@@ -39,45 +39,55 @@ package fr.liglab.multicom.domus.dataset.sensors;
  * @author <a href="mailto:Mathieu.Gallissot@imag.fr">Mathieu Gallissot</a>
  * 
  */
-public class Identifier {
+public class Identifier implements Comparable<Identifier> {
 
-  private long id;
-  private String resource;
+	private long id;
+	private String resource;
 
-  public Identifier(long l, byte b, String string) {
-    this.id = (l << 8) + b;
-    this.resource = string;
-  }
+	public Identifier(long l, byte b, String string) {
+		this.id = (l << 8) + b;
+		this.resource = string;
+	}
 
-  public Identifier(long l, String string) {
-    this.id = l;
-    this.resource = string;
-  }
+	public Identifier(long l, String string) {
+		this.id = l;
+		this.resource = string;
+	}
 
-  public boolean equals(Object obj) {
-    if (obj instanceof Identifier) {
-      return this.toString().equals(obj.toString());
-    }
-    return super.equals(obj);
-  }
-  
-  @Override
-  public String toString() {
-    return Long.toHexString(this.id) + "/" + this.resource;
-  }
-  
-  @Override
-  public int hashCode() {
-    return this.toString().hashCode();
-  }
+	public boolean equals(Object obj) {
+		if (obj instanceof Identifier) {
+			return this.toString().equals(obj.toString());
+		}
+		return super.equals(obj);
+	}
 
-  public static Identifier fromFilename(String name) {
-    try {
-      return new Identifier(Long.parseLong(name.split("\\-")[0], 16), name.split("\\-")[1].split("\\.")[0]);
-    } catch (Throwable t) {
-      return null;
-    }
-  }
- 
+	@Override
+	public String toString() {
+		return Long.toHexString(this.id) + "/" + this.resource;
+	}
+
+	@Override
+	public int hashCode() {
+		return this.toString().hashCode();
+	}
+
+	public static Identifier fromFilename(String name) {
+		try {
+			return new Identifier(Long.parseLong(name.split("\\-")[0], 16),
+					name.split("\\-")[1].split("\\.")[0]);
+		} catch (Throwable t) {
+			return null;
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
+	@Override
+	public int compareTo(Identifier arg0) {
+		return new Long(this.id).compareTo(new Long(arg0.id));
+	}
 
 }

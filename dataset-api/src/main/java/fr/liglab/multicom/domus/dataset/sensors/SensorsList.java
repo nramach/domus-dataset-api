@@ -187,6 +187,10 @@ public class SensorsList {
   
   public static final Identifier COUNTER_COLD_WATER = new Identifier(0xFFFE3E7AA49BL, (byte) 01, RES_ANN);
   public static final Identifier COUNTER_HOT_WATER = new Identifier(0xFFFE395A4D9CL, (byte) 01, RES_ANN);
+  
+  public static final Identifier[] COUNTERS_ELEC = new Identifier[] {COUNTER_ELEC, COUNTER_ELEC_INSTANT_POWER, COUNTER_ELEC_INSTANT_VOLTAGE};
+  public static final Identifier[] COUNTERS_WATER = new Identifier[] {COUNTER_COLD_WATER, COUNTER_HOT_WATER};
+  public static final Identifier[] COUNTERS = new Identifier[] {COUNTER_ELEC, COUNTER_ELEC_INSTANT_POWER, COUNTER_ELEC_INSTANT_VOLTAGE,COUNTER_COLD_WATER,COUNTER_HOT_WATER};
 
   public static final Identifier TEMP_CHAMBRE = new Identifier(0xFFFEB8A8CCBBL, (byte) 01, RES_ANN); // temp chambre
   public static final Identifier HUMIDITE = new Identifier(0xFFFE3CE1BCAAL, (byte) 01, RES_ANN); // hmid
@@ -194,6 +198,8 @@ public class SensorsList {
   public static final Identifier LUMINO_CUISINE = new Identifier(0xFFFE48CA9395L, (byte) 01, RES_ANN); // lumino cuisine
   public static final Identifier TEMP_BUREAU = new Identifier(0xFFFE9DA3A50AL, (byte) 01, "temperature"); // temp piaule
   public static final Identifier CO2 = new Identifier(0xFFFE97678AADL, (byte) 01, RES_ANN);
+  
+  public static final Identifier[] AIR = new Identifier[] {TEMP_CHAMBRE, HUMIDITE, LUMINO_BUREAU, LUMINO_CUISINE, TEMP_BUREAU, CO2};
 
   public static final Identifier EXT_TEMP = new Identifier(0xFFFEA94554AAL, (byte) 01, RES_ANN); // temp
   public static final Identifier EXT_PRESSURE = new Identifier(0xFFFEAA37796BL, (byte) 01, RES_ANN); // pressure
@@ -219,6 +225,9 @@ public class SensorsList {
   public static final Identifier[] PLUGS = new Identifier[] {PC_3_VALUE, PC_4_VALUE, PC_5_VALUE, PC_6_VALUE, PC_7_VALUE,
                                                              PC_8_VALUE, PC_9_VALUE, PC_10_VALUE, PC_11_VALUE, PC_12_VALUE};
   
+  public static final Identifier DOOR_LOCK = new Identifier(0xFFFECDEBA79FL, (byte) 01, "status");
+  public static final Identifier VENTILATION = new Identifier(0xFFFE45277DABL, (byte) 01, "status");
+  public static final Identifier EXTERNAL_LIGHTING = new Identifier(0xFFFE29CCBAB7L, (byte) 01, "status");
 
   /**
    * 
